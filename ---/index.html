@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALQUIPC - Sistema de Alquiler</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="header">
+        <h1>ALQUIPC</h1>
+        <p>Sistema de Gestión y Alquiler de Equipos de Cómputo</p>
+      </header>
+
+      <div class="card">
+        <h2>Datos del Registro</h2>
+
+        <form id="formAlquiler">
+          <div class="form-group">
+            <label for="nombre">Nombre completo:</label>
+            <input
+              type="text"
+              id="nombre"
+              maxlength="40"
+              placeholder="Ej. Samir Guerrero"
+              required
+            />
+            <small class="error-text" id="errNombre"></small>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="idCliente">Cédula / ID:</label>
+              <input
+                type="text"
+                id="idCliente"
+                maxlength="10"
+                placeholder="Ej. 1020304050"
+                required
+              />
+              <small class="error-text" id="errId"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="telefono">Teléfono:</label>
+              <input
+                type="text"
+                id="telefono"
+                maxlength="10"
+                placeholder="Ej. 3001234567"
+                required
+              />
+              <small class="error-text" id="errTelefono"></small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo electrónico:</label>
+            <input
+              type="email"
+              id="email"
+              maxlength="50"
+              placeholder="cliente@gmail.com"
+              required
+            />
+            <small class="error-text" id="errEmail"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="tipoServicio">Tipo de servicio:</label>
+            <select id="tipoServicio" required>
+              <option value="">-- Selecciona una opción --</option>
+              <option value="1">1. Dentro de la ciudad</option>
+              <option value="2">
+                2. Fuera de la ciudad (+ $15.000 domicilio)
+              </option>
+              <option value="3">
+                3. Dentro del establecimiento (10% descuento)
+              </option>
+            </select>
+            <small class="error-text" id="errServicio"></small>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="numEquipos">N de equipos (1 a 20):</label>
+              <input
+                type="number"
+                id="numEquipos"
+                min="1"
+                max="20"
+                step="1"
+                value="1"
+                required
+              />
+              <small class="error-text" id="errEquipos"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="diasIniciales">Días iniciales (mín 1):</label>
+              <input
+                type="number"
+                id="diasIniciales"
+                min="1"
+                max="60"
+                step="1"
+                value="1"
+                required
+              />
+              <small class="error-text" id="errDiasInit"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="diasExtra">Días adicionales:</label>
+              <input
+                type="number"
+                id="diasExtra"
+                min="0"
+                max="60"
+                step="1"
+                value="0"
+              />
+              <small class="error-text" id="errDiasExtra"></small>
+            </div>
+          </div>
+
+          <div class="buttons">
+            <button type="button" id="btnLimpiar" class="btn btn-secundario">
+              Limpiar
+            </button>
+            <button type="submit" class="btn btn-primario">
+              Generar Factura
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card factura-card hidden" id="seccionFactura">
+        <div class="factura-header">
+          <h2>Factura Generada</h2>
+          <span class="tag">ALQUIPC SENA</span>
+        </div>
+
+        <div id="detalleFactura" class="factura-body"></div>
+
+        <div class="buttons">
+          <button
+            type="button"
+            class="btn btn-secundario"
+            onclick="window.print()"
+          >
+            Imprimir
+          </button>
+          <button type="button" id="btnNuevo" class="btn btn-primario">
+            Nuevo Registro
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
